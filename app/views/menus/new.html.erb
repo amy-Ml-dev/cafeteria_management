@@ -1,0 +1,13 @@
+<section>
+  <h1> Add menu </h1>
+
+  <%= form_with url: menus_path do |form| %>
+
+    <div>
+      Menu Name  :<br/>
+      <%= form.text_field :name %>
+    </div>
+
+    <%= form.submit "Create new menu !" %>
+  <% end %>
+</section>

@@ -1,6 +1,6 @@
 class MenusController < ApplicationController
-  before_action :ensure_user_logged_in
-  before_action :ensure_user_is_owner
+  #before_action :ensure_user_logged_in
+  #before_action :ensure_user_is_owner
 
   def new
     "/menus/new"
@@ -18,10 +18,13 @@ class MenusController < ApplicationController
   end
 
   def create
-    Menu.create(
-      name: params[:menu_name],
-      is_active: params[:is_active],
-    )
-    redirect_to menus_path
+    name = params[:name]
+    new_menu = Menu.new(name: name)
+    if new_menu.save
+      redirect_to "/menus"
+    else
+      flash[:error] = new_menu.errors.full_messages.join(", ")
+      redirect_to new_menu_path
+    end
   end
 end
