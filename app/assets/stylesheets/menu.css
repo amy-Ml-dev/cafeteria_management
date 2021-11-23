@@ -1,0 +1,93 @@
+.MenuPage-title {
+  font-size: 48px;
+  line-height: 1.5;
+}
+.Menu-text {
+  text-align: center;
+  color: white;
+  line-height: 200px;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+.Menu-text:hover {
+  box-shadow: 0 10px 20px 5px rgba(0, 0, 0, 0.2);
+}
+.Menu-container:hover {
+  cursor: pointer;
+}
+.Menu-link {
+  text-decoration: none;
+}
+.Menu-form {
+  display: flex;
+}
+.Menu-checkbox {
+  width: 16px;
+  height: 16px;
+  background: #ffffff;
+  border: 1px solid #bfb8cc;
+  border-radius: 4px;
+  filter: grayscale(1);
+}
+.Menu-grid {
+  width: 100%;
+  display: grid;
+  margin-left: 3%;
+  grid-template-columns: 18% 18% 18% 18%;
+  font-size: 25px;
+  grid-gap: 5%;
+  padding: 50px;
+}
+.AddMenu {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+.AddMenu-name {
+  margin-right: 10px;
+  padding: 10px 22px;
+}
+.EditMenu {
+  display: flex;
+  background-color: white;
+  justify-content: space-around;
+  width: 60%;
+  margin: auto;
+  padding: 10px 0;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+.EditMenu:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+.EditMenu-name {
+  font-size: x-large;
+  color: #333333;
+  margin-right: 20px;
+}
+
+.Menu-active {
+  background-color: green;
+  border: 1px solid green;
+  color: white;
+  font-size: small;
+  text-align: center;
+  padding-top: 4px;
+  padding-bottom: 1px;
+}
+.Menu-Inactive {
+  background-color: red;
+  border: 1px solid red;
+  color: white;
+  font-size: small;
+  text-align: center;
+  padding-top: 4px;
+  padding-bottom: 1px;
+}
+.plus-img,
+.edit {
+  width: 20px;
+  height: 20px;
+}

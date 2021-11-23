@@ -7,3 +7,23 @@
 <h3 class= "Home-authenticate">
     Already have an account?, <%= link_to "sign-in here", new_sessions_path %>
 </h3>
+<h1>Accessible to customer</h1>
+        <ul>
+            <%= link_to "Cart", "/carts" %>
+            <%= link_to "Menu", "/menus" %>
+            <%= link_to "Orders", "orders/new" %>
+
+        </ul>
+        <br/>
+    <h1>Accessible to owner (admin)</h1>
+        <ul>
+            <%= link_to "Editable Menu Page ", new_menu_path %>
+            <%= link_to "Manage Users page ", new_user_path %>
+
+            <li>/reports : Sales report Page</li>
+        </ul>
+        <br/>
+    <h1>Accessible to billing clerk</h1>
+        <ul >
+            <li>/reports : Pending Orders Page</li>
+        </ul>

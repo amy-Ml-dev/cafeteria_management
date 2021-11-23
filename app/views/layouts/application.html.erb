@@ -11,23 +11,9 @@
   </head>
 
   <body>
-  <% if @current_user %>
-      <% if @current_user.role == "Owner" %>
-        <%= render partial: "owner-home-menu" %>
-      <% elsif @current_user.role == "Billing Clerk" %>
-        <%= render partial: "clerk-home-menu" %>
-      <% elsif @current_user.role == "Customer" %>
-        <%= render partial: "customer-home-menu" %>
-      <% end %>
-    <% end %>
 
 
-    <% if @current_user %>
-      <p class="UserHeader">
-       Hello <%= @current_user.first_name %>
-       <%= link_to "Sign-out", destroy_session_path, method: "delete" %>
-      </p>
-    <% end %>
+
     <% if flash[:error] %>
       <p class="Flash-error" >
           <%= flash[:error] %>

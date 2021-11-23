@@ -4,26 +4,30 @@
     <%= form_with url: users_path do |form| %>
       <div class="Form-Section" >
         <p class="FormInput-label"> First Name: </p>
-        <%= form.text_field :first_name, class: "Form-input" %>
+        <%= text_field_tag(:first_name, nil, class: "Form-input", placeholder: "Enter your first name", autofocus: "autofocus") %>
       </div>
 
       <div class="Form-Section" >
         <p class="FormInput-label"> Last Name: </p>
-        <%= form.text_field :last_name, class: "Form-input" %>
+        <%= text_field_tag(:last_name, nil, class: "Form-input", placeholder: "Enter your last name", autofocus: "autofocus") %>
       </div>
 
       <div class="Form-Section" >
         <p class="FormInput-label"> Email: </p>
-        <%= form.email_field :email, class: "Form-input" %>
+        <%= email_field(nil, nil, name: "email", class: "Form-input", placeholder: "Enter your E-mail") %>
       </div>
 
       <div class="Form-Section" >
         <p class="FormInput-label"> Password: </p>
         <%= form.password_field :password, class: "Form-input" %>
       </div>
+      <div>
+      <p class="FormInput-label"> Role: </p>
+      <%= form.select :role, ["Customer", "Billing Clerk", "Owner"] %>
+    </div>
 
       <div class="Form-Section" >
-        <%= form.submit "Sign-up!", class: "Form-submit" %>
+        <%= submit_tag("Sign-up!", class: "Form-submit") %>
       </div>
 
     <% end %>

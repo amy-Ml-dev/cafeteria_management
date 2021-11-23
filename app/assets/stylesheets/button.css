@@ -1,0 +1,17 @@
+.Table-button,
+.AddMenu-button,
+.AddMenuItem-button {
+  background-color: white;
+  color: black;
+  border: 2px solid #e7e7e7;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  padding: 6px;
+  font-size: medium;
+  text-decoration: none;
+}
+.Table-button:hover,
+.AddMenu-button:hover,
+.AddMenuItem-button:hover {
+  background-color: #e7e7e7;
+}

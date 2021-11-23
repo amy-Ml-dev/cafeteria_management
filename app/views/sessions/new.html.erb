@@ -5,7 +5,7 @@
 
       <div class="Form-Section" >
         <p class="FormInput-label"> Email: </p>
-        <%= form.email_field :email, class: "Form-input", autofocus: true %>
+        <%= email_field(nil, nil, name: "email", class: "Form-input", placeholder: "Enter your E-mail") %>
       </div>
 
       <div class="Form-Section" >
@@ -14,7 +14,7 @@
       </div>
 
       <div class="Form-Section" >
-        <%= form.submit "Sign-in!", class: "Form-submit" %>
+        <%= submit_tag("Sign-in!", class: "Form-submit") %>
       </div>
 
     <% end %>

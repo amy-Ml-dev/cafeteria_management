@@ -1,0 +1,41 @@
+<article>
+  <div>
+    <%= form_with url: menu_items_path, method: "post", class: "AddMenuItem" do %>
+      <%= hidden_field_tag :menu_id, @menu_id %>
+      <%= text_field_tag "menu_item_name", nil, placeholder: "Name of the MenuItem", class: "AddMenuItem-name" %>
+      <input type="number" name="menu_item_price" value="100" min="1" max="1000" class="AddMenuItem-price"/>
+      <%= submit_tag "Add", class: "AddMenu-button" %>
+    <% end %>
+  </div>
+  <div>
+    <% @menu_items.each do |menu_item| %>
+      <% if session[:edit_menu_item_id].to_s == (menu_item.id).to_s %>
+        <div class="EditMenu">
+        <%= form_with url: edit_menu_item_details_path, method: "patch" do %>
+          <%= hidden_field_tag :menu_id, @menu_id %>
+          <%= hidden_field_tag :menu_item_id, menu_item.id %>
+          <%= text_field_tag "menu_item_name",
+                             menu_item.menu_item_name,
+                             placeholder: "Change the MenuItem Name",
+                             class: "AddMenuItem-name" %>
+          <input type="number" name="menu_item_price" value="100" min="1" max="1000" class="AddMenuItem-price"/>
+          <%= submit_tag "Change" %>
+        <% end %>
+        </div>
+      <% else %>
+        <div class="EditMenuItem">
+          <p class="EditMenuItem-name"> <%= menu_item.menu_item_name %> </p>
+          <p> &#x20b9; <%= menu_item.menu_item_price %> </p>
+          <%= form_with(url: edit_menu_item_path(menu_item.id), method: "get", local: true) do %>
+              <%= hidden_field_tag :menu_id, @menu_id %>
+              <%= image_submit_tag "edit.svg", class: "edit", title: "Edit MenuName" %>
+          <% end %>
+          <%= form_with url: menu_item_path(menu_item.id), method: "delete", class: "Menu-form" do %>
+            <%= hidden_field_tag :menu_id, @menu_id %>
+            <%= image_submit_tag "trash.svg", class: "EditMenu-img", data: { confirm: "Are you sure?" } %>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</article>
