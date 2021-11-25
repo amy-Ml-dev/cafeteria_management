@@ -1,27 +1,54 @@
 class OrdersController < ApplicationController
-  skip_before_action :ensure_user_logged_in
+  def index
+    @orders = Order.placed_orders(@current_user.id)
+    render "index"
+  end
 
-  def new
-    render "order_items/new"
+  def show
+    @orders = Order.where(id: params[:id])
   end
 
   def create
-    order = params[:order]
-    order_id = order.split[0].to_i
-    menu_item_name = params[:item].split[1]
-    menu_item = MenuItem.find_by(name: menu_item_name)
+    @current_order.update!(total_price: params[:total_price].to_f,
+                           status: "placed", ordered_at: DateTime.now)
+    redirect_to order_path(@current_order.id)
+  end
 
-    new_order_item = OrderItem.new(
-      order_id: order_id,
-      menu_item_id: menu_item.id,
-      menu_item_name: menu_item_name,
-      menu_item_price: menu_item.price,
-    )
-    if new_order_item.save
-      redirect_to "/order_items"
+  def update
+    id = params[:id]
+    order = Order.find(id)
+    order.delivered_at = DateTime.now
+    order.status = "delivered"
+    order.save!
+    redirect_to pending_orders_path
+  end
+
+  def cart
+    order_item = OrderItem.exists?(@current_user.id, @current_order.id, params[:menu_item_id])
+    if order_item
+      updated_quantity = order_item.quantity + params[:quantity].to_i
+      order_item.update!(quantity: updated_quantity,
+                         price: updated_quantity * params[:item_price].to_f)
     else
-      flash[:error] = new_order_item.errors.full_messages.join(", ")
-      redirect_to new_order_item_path
+      order_item = OrderItem.new(
+        order_id: @current_order.id,
+        menu_item_id: params[:menu_item_id],
+        menu_item_name: params[:item_name],
+        menu_item_price: params[:item_price],
+        quantity: params[:quantity],
+        price: params[:quantity].to_f * params[:item_price].to_f,
+      )
+      if (order_item.save)
+        # do nothing
+      else
+        flash[:error] = order_item.errors.full_messages.join(",")
+      end
     end
+    redirect_to menu_path(params[:menu_id])
+  end
+
+  def pending
+    @orders = Order.pending_orders?
+    render "pending"
   end
 end

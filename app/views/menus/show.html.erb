@@ -25,5 +25,35 @@
             </div>
           <% end %>
       </section>
+      <section class="Food-cart">
+        <h1 style="font-size:x-large;padding-bottom:10px;" class="HeaderFont">Your Cart!</h1>
+        <% order_items = Order.find(@current_order.id).order_items %>
+        <% total_price = 0 %>
+        <div class="Item-info">
+          <% if order_items.length != 0 %>
+              <p class="HeaderFont">S.No</p>
+              <p class="HeaderFont">Item</p>
+              <p class="HeaderFont">Price</p>
+              <p class="HeaderFont">Quantity</p>
+              <p class="HeaderFont">Total Price</p>
+              <p></p>
+          <% end %>
+          <% item_count = 1 %>
+          <% order_items.each do |item| %>
+              <p> <%= item_count %> </p>
+              <p> <%= item.menu_item_name %> </p>
+              <p> &#x20b9; <%= item.menu_item_price %> </p>
+              <p> <%= item.quantity %> </p>
+              <p> &#x20b9; <%= item.price %> </p>
+              <%= form_with url: order_item_path(item.id), method: "delete" do %>
+                <%= hidden_field_tag :menu_id, menu_id %>
+                <%= image_submit_tag "minus.svg", class: "Minus" %>
+              <% end %>
+            <% item_count = item_count + 1 %>
+            <% total_price += item.price %>
+          <% end %>
+        </div>
+
+      </section>
     </section>
 </article>
