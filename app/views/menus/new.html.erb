@@ -12,7 +12,7 @@
             <%= form_with url: edit_menu_details_path, method: "patch" do %>
               <%= hidden_field_tag :id, menu.id %>
               <%= text_field_tag :name, menu.name, placeholder: "Change the Menu Name", class: "AddMenu-name" %>
-              <%= submit_tag "change name", class: "Table-button" %>
+              <%= submit_tag "Change" %>
             <% end %>
           </div>
         <% else %>

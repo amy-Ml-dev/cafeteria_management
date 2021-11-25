@@ -10,7 +10,9 @@ class MenusController < ApplicationController
   end
 
   def show
-    @current_user = current_user
+    if @current_user == nil
+      @current_user = current_user
+    end
     render "show"
   end
 

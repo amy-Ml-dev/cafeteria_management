@@ -1,0 +1,29 @@
+<% menu = Menu.find(params[:id]).menu_items %>
+<% menu_id = params[:id] %>
+<article class="Wrapper">
+    <section class="Wrapper-grid">
+      <section class="MenuItem">
+          <% menu.each do |item| %>
+            <div class="MenuItem-container">
+              <%= form_with url: cart_path, method: "post" do |form| %>
+                <%= hidden_field_tag :item_name, item.menu_item_name %>
+                <%= hidden_field_tag :item_price, item.menu_item_price %>
+                <%= hidden_field_tag :menu_item_id, item.id %>
+                <%= hidden_field_tag :menu_id, menu_id %>
+                <p class="MenuItem-name HeaderFont"> <%= item.menu_item_name %> </p>
+                <div class="LeftRight">
+                <p class="MenuItem-price"> Price: &#x20b9; <%= item.menu_item_price %> </p>
+                <div style="display:flex;">
+                  <p style="margin-right:10px;">Quantity: </p>
+                  <input type="number" name="quantity" id="quantity" value="1" min="1" max="8">
+                </div>
+                </div>
+                <div class="wrapper">
+                  <%= form.submit "Add to Cart", class: "Table-button" %>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+      </section>
+    </section>
+</article>

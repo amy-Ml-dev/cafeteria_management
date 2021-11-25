@@ -67,7 +67,10 @@
   color: #333333;
   margin-right: 20px;
 }
-
+.EditMenu-img:hover {
+  filter: invert(31%) sepia(57%) saturate(7329%) hue-rotate(350deg)
+    brightness(100%) contrast(149%);
+}
 .Menu-active {
   background-color: green;
   border: 1px solid green;
@@ -90,4 +93,9 @@
 .edit {
   width: 20px;
   height: 20px;
+}
+.Minus {
+  position: relative;
+  width: 30%;
+  height: 30%;
 }
