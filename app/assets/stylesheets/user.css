@@ -39,18 +39,6 @@
 .Form-submit:hover {
   cursor: pointer;
 }
-.login-card {
-  display: flex;
-  position: relative;
-  justify-content: flex-end;
-  width: 70%;
-  height: 80%;
-  top: 10%;
-  margin: auto;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  background-color: white;
-  border-radius: 5px;
-}
 
 .UsersNew {
   margin-left: auto;
