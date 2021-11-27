@@ -1,9 +1,9 @@
-<h1 class ="Home-title"> Welcome to Cafeteria-Manager </h1>
-
-<h3 class= "Home-authenticate">
-    If you are new user, <%= link_to "sign-up here", new_user_path %>
-</h3>
-
-<h3 class= "Home-authenticate">
-    Already have an account?, <%= link_to "sign-in here", new_sessions_path %>
-</h3>
+<div class="Cafeteria-img">
+  <div class="Cafeteria-auth">
+    <p> <%= link_to "Login", new_sessions_path, class: "Cafeteria-auth-url" %> </p>
+    <p> <%= link_to "Register", new_user_path, class: "Cafeteria-auth-url" %> </p>
+  </div>
+  <div class="Cafeteria-text">
+    <h1>Cafeteria Management</h1>
+  </div>
+</div>

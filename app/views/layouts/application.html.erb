@@ -1,24 +1,76 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Cafeteria Manager</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>CafeteriaManager</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", media: "all", 'data-turbolinks-track': "reload" %>
     <%= javascript_pack_tag "application", 'data-turbolinks-track': "reload" %>
+    <link
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
   </head>
 
   <body>
+    <% if @current_user %>
 
-
-
-    <% if flash[:error] %>
-      <p class="Flash-error" >
-          <%= flash[:error] %>
-      </p>
+      <div class="NavBar">
+          <ul class="NavBar-items">
+            <li class="NavBar-title">
+              <p style="font-size: xxx-large;color:dimgrey;">Cafeteria</p>
+            <li>
+            <% if @current_user.role == "owner" %>
+              <li class="NavBar-item-wrapper">
+                <i class="fa fa-home"></i>
+                <%= link_to "Home", admins_index_path, method: "get", class: "NavBar-content" %>
+              </li>
+              <li class="NavBar-item-wrapper">
+                <%= link_to "Users", show_users_path, method: "get", class: "NavBar-content" %>
+              </li>
+              <li class="NavBar-item-wrapper">
+                <%= link_to "Manage Billers", manage_billers_path, method: "get", class: "NavBar-content" %>
+              </li>
+              <li class="NavBar-item-wrapper">
+                <%= link_to "Reports", show_reports_path, method: "get", class: "NavBar-content" %>
+              </li>
+            <% end %>
+            <% if (@current_user.role == "owner" || @current_user.role == "clerk") %>
+              <li class="NavBar-item-wrapper">
+                  <i class="fa fa-truck"></i>
+                  <%= link_to "Pending-orders", pending_orders_path, method: "get", class: "NavBar-content" %>
+              </li>
+            <% end %>
+            <li class="NavBar-item-wrapper">
+              <i class="fa fa-hamburger"></i>
+              <%= link_to "Menus", menus_path, method: "get", class: "NavBar-content" %>
+            </li>
+            <li class="NavBar-item-wrapper">
+              <%= link_to "My-Orders", orders_path, method: "get", class: "NavBar-content" %>
+            </li>
+            <li class="NavBar-item-wrapper">
+              <i class="fa fa-power-off"></i>
+              <%= link_to "Sign-out", destroy_session_path, method: "delete", class: "NavBar-content" %>
+            </li>
+            <div class="dropdown">
+              <li class="dropbtn">
+                <i class="fa fa-user"></i>
+              </li>
+              <div class="dropdown-content">
+                <a href="/users/<%= session[:current_user_id] %>">Profile</a>
+              </div>
+            </div>
+          </ul>
+      </div>
     <% end %>
-    <%= yield %>
+    <div class="Body-content">
+      <% if flash[:error] %>
+        <p class="Flash-error">
+          <%= flash[:error] %>
+        </p>
+      <% end %>
+      <%= yield %>
+    </div>
   </body>
 </html>

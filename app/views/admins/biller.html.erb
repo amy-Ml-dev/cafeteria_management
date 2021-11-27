@@ -1,0 +1,20 @@
+<article>
+  <p class="ChangeFont" style="padding-top:20px;">Billers</p>
+  <%= link_to new_clerk_path, method: "get" do %>
+    <%= image_tag "user.png", class: "AddUserImg", title: "Add Biller" %>
+  <% end %>
+  <div class="Menus" style="padding:10px;">
+    <% count = 1 %>
+    <% @billers.all.each do |clerk| %>
+      <div class="EditMenu">
+        <p> <%= count %>. </p>
+        <p class="EditMenu-name"> <%= clerk.first_name.to_s + clerk.last_name.to_s %> </p>
+        <p class="EditMenu-name"> <%= clerk.email %> </p>
+        <%= form_with(url: user_path(clerk.id), method: "delete", class: "Menu-form") do |form| %>
+          <%= image_submit_tag "trash.svg", class: "EditMenu-img", title: "Delete User", data: { confirm: "Are you sure?" } %>
+        <% end %>
+        <% count = count + 1 %>
+      </div>
+    <% end %>
+  </div>
+</article>

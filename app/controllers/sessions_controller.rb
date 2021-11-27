@@ -1,9 +1,6 @@
 class SessionsController < ApplicationController
   skip_before_action :ensure_user_logged_in
-
-  def new
-    render "new"
-  end
+  skip_before_action :vars, only: [:destroy]
 
   def create
     user = User.find_by(email: params[:email])

@@ -1,0 +1,15 @@
+<p style="text-align:center;position:relative;top:20%;font-size:70px;color:dimgrey;">Cafeteria</p>
+<div class="Edit-user">
+  <p style="text-align:center;padding-top:10px;padding-bottom:10px;font-size:xx-large;">Welcome..!</p>
+  <div class="Edit-user-content">
+    <p >Name: <%= @user.first_name %>  <%= @user.last_name %> </p>
+  </div>
+  <div class="Edit-user-content">
+    <p >Email: <%= @user.email %> </p>
+  </div>
+  <div class="Edit-user-content">
+    <p >Role: <%= @user.role %> </p>
+  </div>
+  <div style="display: flex;justify-content: center;margin-top:20px;">
+    <%= link_to "Edit Profile", edit_user_path(@current_user.id), method: "get", class: "Table-button" %>
+  </div>

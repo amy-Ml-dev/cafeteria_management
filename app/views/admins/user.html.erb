@@ -24,6 +24,10 @@
         <%= hidden_field_tag :user_id, clerk.id %>
         <%= image_submit_tag "trash.svg", data: { confirm: "Are you sure?" }, class: "Delete-img", title: "Delete User" %>
       <% end %>
+      <%= form_with(url: role_change_customer_path, method: "patch", local: true) do %>
+        <%= hidden_field_tag :user_id, clerk.id %>
+        <%= image_submit_tag "role-change.png", class: "RoleChange", title: "Assign customer role" %>
+      <% end %>
     </div>
     <% count = count + 1 %>
   <% end %>
@@ -32,6 +36,15 @@
     <p class="ChangeFont">Customers</p>
   <% end %>
   <% @customers.each do |customer| %>
-        <% count = count + 1 %>
+    <div class="EditMenu">
+      <p> <%= count %>. </p>
+      <p> <%= customer.first_name.to_s + customer.last_name.to_s %> </p>
+      <p> <%= customer.email %> </p>
+      <%= form_with(url: role_change_clerk_path, method: "patch", local: true) do %>
+        <%= hidden_field_tag :user_id, customer.id %>
+        <%= image_submit_tag "role-change.png", class: "RoleChange", title: "Assign clerk role" %>
+      <% end %>
+    </div>
+    <% count = count + 1 %>
   <% end %>
 </section>

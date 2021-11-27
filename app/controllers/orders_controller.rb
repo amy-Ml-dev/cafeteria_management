@@ -24,7 +24,7 @@ class OrdersController < ApplicationController
   end
 
   def cart
-    order_item = OrderItem.exists?(@current_user.id, @current_order.id, params[:menu_item_id])
+    order_item = OrderItem.exist?(@current_user.id, @current_order.id, params[:menu_item_id])
     if order_item
       updated_quantity = order_item.quantity + params[:quantity].to_i
       order_item.update!(quantity: updated_quantity,

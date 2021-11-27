@@ -1,0 +1,38 @@
+<div class="ReportsFilter">
+  <div style="margin-top:30px;">
+    <%= form_with(url: show_reports_path, method: "get", local: true) do %>
+      <%= label_tag :from_date, "From Date: " %>
+      <%= date_field_tag :from_date, @from_date, class: "FilterItem" %>
+      <%= label_tag :to_date, "To Date: " %>
+      <%= date_field_tag :to_date, @to_date, class: "FilterItem" %>
+      <%= label_tag :username, "User Name: " %>
+      <%= text_field_tag :username, @username, placeholder: "Reports of a User?", class: "UserFilter" %>
+      <%= submit_tag "Apply", class: "Table-button" %>
+    <% end %>
+  </div>
+</div>
+<section>
+  <% if @invoices.empty? %>
+    <p style="position:absolute;font-size:30px;top:40%;left:40%;color:#ac4d62;font-style:Italic;">
+      No Invoices in that period!
+    </p>
+  <% else %>
+    <div class="EditMenu" style="background-color:#abcd34;margin-top:20px;">
+      <p>ORDER ID</p>
+      <p>USER NAME</p>
+      <p>ORDER PRICE</p>
+      <p></p>
+    </div>
+    <div>
+    <% @invoices.each do |invoice| %>
+      <div class="EditMenu">
+      <p> <%= invoice.id %> </p>
+      <p> <%= invoice.user.first_name.to_s + invoice.user.last_name.to_s %> </p>
+      <p>&#x20b9; <%= invoice.total_price %> </p>
+      <%= form_with url: order_path(invoice.id), method: "get", local: true do %>
+        <%= image_submit_tag "enter.svg", class: "Enter-img", title: "View Invoice" %>
+      <% end %>
+      </div>
+    <% end %>
+  <% end %>
+</section>

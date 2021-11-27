@@ -1,0 +1,26 @@
+<p style="text-align:center;position:relative;top:20%;font-size:70px;color:dimgrey;">Cafeteria</p>
+<div class="Edit-user">
+  <p style="text-align:center;padding-top:10px;padding-bottom:10px;font-size:xx-large;">Edit Profile</p>
+  <%= form_with url: user_path(@current_user.id), method: "patch" do |form| %>
+    <p style="font-size:medium;">First Name:</p>
+    <div class="Edit-user-content">
+      <%= form.text_field :first_name, class: "Form-input" %>
+    </div>
+    <p style="font-size:medium;">Last Name:</p>
+    <div class="Edit-user-content">
+      <%= form.text_field :last_name, class: "Form-input" %>
+    </div>
+    <p style="font-size:medium;">E-Mail:</p>
+    <div class="Edit-user-content">
+      <%= form.email_field :email, class: "Form-input" %>
+    </div>
+    <p style="font-size:medium;">password:</p>
+    <div class="Edit-user-content">
+      <%= form.password_field :password, class: "Form-input" %>
+    </div>
+    <div style="display: flex;justify-content: center;margin-top:20px;">
+      <%= form.submit "Update", class: "Table-button" %>
+    </div>
+    <p style="color:red;"> <%= flash[:error] %> </p>
+  <% end %>
+</div>

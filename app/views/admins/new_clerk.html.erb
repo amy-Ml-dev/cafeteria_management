@@ -1,0 +1,26 @@
+<section style="margin-top:20px;">
+  <p style="padding-top:20px;" class="ChangeFont">New Biller</p>
+  <div class="NewClerk">
+    <%= form_with url: create_clerk_path do |form| %>
+      <div class="Form-section">
+        <p class="FormInput-label">First name:</p>
+        <%= form.text_field :first_name, class: "Form-input" %>
+      </div>
+      <div class="Form-section">
+        <p class="FormInput-label">Last name:</p>
+        <%= form.text_field :last_name, class: "Form-input" %>
+      </div>
+      <div class="Form-section">
+        <p class="FormInput-label">email:</p>
+        <%= form.email_field :email, class: "Form-input" %>
+      </div>
+      <div class="Form-section">
+        <p class="FormInput-label">password:</p>
+        <%= form.password_field :password, class: "Form-input" %>
+      </div>
+      <div class="Form-section">
+        <%= form.submit "CREATE", class: "Form-submit" %>
+      </div>
+    <% end %>
+  </div>
+</section>
