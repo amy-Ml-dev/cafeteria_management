@@ -43,8 +43,9 @@ class MenusController < ApplicationController
     id = params[:id]
     menu = Menu.find(id)
     menu.active = !menu.active
-    menu.save!
-    redirect_to new_menu_path
+    if menu.save
+      redirect_to new_menu_path
+    end
   end
 
   def edit_menu_details

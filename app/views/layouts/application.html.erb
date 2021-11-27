@@ -24,7 +24,7 @@
             <% if @current_user.role == "owner" %>
               <li class="NavBar-item-wrapper">
                 <i class="fa fa-home"></i>
-                <%= link_to "Home", admins_index_path, method: "get", class: "NavBar-content" %>
+                <%= link_to "Home", new_menu_path, method: "get", class: "NavBar-content" %>
               </li>
               <li class="NavBar-item-wrapper">
                 <%= link_to "Users", show_users_path, method: "get", class: "NavBar-content" %>

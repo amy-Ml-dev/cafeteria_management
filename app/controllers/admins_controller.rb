@@ -32,7 +32,7 @@ class AdminsController < ApplicationController
     @admins = User.all.where(role: "owner")
     @billers = User.all.where(role: "clerk")
     @customers = User.all.where(role: "customer")
-    render "users"
+    redirect_to show_users_path
   end
 
   def reports
