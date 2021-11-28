@@ -119,7 +119,7 @@ html {
   display: block;
   text-align: center;
 }
-.dropdown-content a:hover {
+.a:hover {
   background-color: #ddd;
 }
 .ChangeFont {

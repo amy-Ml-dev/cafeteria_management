@@ -21,11 +21,6 @@
         <p class="FormInput-label"> Password: </p>
         <%= form.password_field :password, class: "Form-input" %>
       </div>
-      <div>
-      <p class="FormInput-label"> Role: </p>
-      <%= form.select :role, ["customer", "clerk", "owner"] %>
-    </div>
-
       <div class="Form-Section" >
         <%= submit_tag("Sign-up!", class: "Form-submit") %>
       </div>

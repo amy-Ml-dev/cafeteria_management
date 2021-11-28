@@ -54,10 +54,7 @@
               <%= link_to "Sign-out", destroy_session_path, method: "delete", class: "NavBar-content" %>
             </li>
             <div class="dropdown">
-              <li class="dropbtn">
-                <i class="fa fa-user"></i>
-              </li>
-              <div class="dropdown-content">
+              <div class="a:hover">
                 <a href="/users/<%= session[:current_user_id] %>">Profile</a>
               </div>
             </div>
