@@ -40,7 +40,7 @@ class AdminsController < ApplicationController
     if params[:from_date] && params[:to_date]
       @invoices = Order.all.where("ordered_at >= ? and ordered_at <= ?", params[:from_date].to_time.beginning_of_day, params[:to_date].to_time.end_of_day)
       if params[:username] && params[:username] != "All Users"
-        if user = User.find_by(name: params[:username])
+        if user = User.find_by(first_name: params[:username])
           @invoices = @invoices.all.where(user_id: user.id)
         else
           flash[:error] = "User: #{params[:username]} doesn't exist!"
