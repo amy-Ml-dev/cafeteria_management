@@ -34,7 +34,7 @@ class UsersController < ApplicationController
       last_name: params[:last_name],
       email: params[:email],
       password: params[:password],
-      role: "customer",
+      role: params[:role],
     )
     if new_user.save
       new_user.update!(first_name: new_user.first_name.to_s, last_name: new_user.last_name.to_s,
