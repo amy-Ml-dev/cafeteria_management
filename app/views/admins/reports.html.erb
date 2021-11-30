@@ -5,9 +5,7 @@
       <%= date_field_tag :from_date, @from_date, class: "FilterItem" %>
       <%= label_tag :to_date, "To Date: " %>
       <%= date_field_tag :to_date, @to_date, class: "FilterItem" %>
-      <%= label_tag :username, "User Name: " %>
-      <%= text_field_tag :username, @username, placeholder: "Reports of a User?", class: "UserFilter" %>
-      <%= submit_tag "Apply", class: "Table-button" %>
+     <%= submit_tag "Apply", class: "Table-button" %>
     <% end %>
   </div>
 </div>
