@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   def update
     user = User.find(params[:id])
     if user && user.authenticate(params[:password])
-      user.update!(email: params[:email], first_name: params[:first_name], last_name: params[:last_name], password: params[:password])
+      user.update!(email: params[:email], first_name: params[:first_name], last_name: params[:last_name], role: params[:role], password: params[:password])
       if !user.save
         flash[:error] = user.errors.full_messages.join(",")
       end
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
       role: params[:role],
     )
     if new_user.save
-      new_user.update!(first_name: new_user.first_name.to_s, last_name: new_user.last_name.to_s,
+      new_user.update!(first_name: new_user.first_name.to_s, last_name: new_user.last_name.to_s, role: params[:role],
                        password: params[:password])
       redirect_to "/"
     else
