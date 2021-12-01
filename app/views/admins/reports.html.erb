@@ -18,14 +18,19 @@
     <div class="EditMenu" style="background-color:#abcd34;margin-top:20px;">
       <p>ORDER ID</p>
       <p>USER NAME</p>
+      <p>ORDER TYPE</p>
       <p>ORDER PRICE</p>
-      <p></p>
-    </div>
+      </div>
     <div>
     <% @invoices.each do |invoice| %>
       <div class="EditMenu">
       <p> <%= invoice.id %> </p>
+      <p></p>
       <p> <%= invoice.user.first_name.to_s + invoice.user.last_name.to_s %> </p>
+      <p></p>
+      <p> <%= invoice.order_type %> </p>
+      <p></p>
+      <p></p>
       <p>&#x20b9; <%= invoice.total_price %> </p>
       <%= form_with url: order_path(invoice.id), method: "get", local: true do %>
         <%= image_submit_tag "enter.svg", class: "Enter-img", title: "View Invoice" %>

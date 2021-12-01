@@ -9,8 +9,12 @@ class OrdersController < ApplicationController
   end
 
   def create
+    order_type = "walk-in"
+    if @current_user.role == "customer"
+      order_type = "online"
+    end
     @current_order.update!(total_price: params[:total_price].to_f,
-                           status: "placed", ordered_at: DateTime.now)
+                           status: "placed", ordered_at: DateTime.now, order_type: order_type)
     redirect_to order_path(@current_order.id)
   end
 

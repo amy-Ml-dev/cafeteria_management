@@ -25,6 +25,7 @@
           <p>Delivered On : <%= order.delivered_at.localtime.to_s(:long) %> </p>
         <% end %>
       </div>
+
       <p style="position: relative;left: 38%; padding:10px;">Total Price: &#x20b9;<%= order.total_price %> </p>
       <% if order.status == "delivered" %>
         <div class="OrderStatus">
@@ -36,5 +37,6 @@
         </div>
       <% end %>
     </div>
+
   <% end %>
 </section>

@@ -57,6 +57,7 @@
           <p style="padding:10px;">Total Price: &#x20b9; <%= total_price %> </p>
           <%= form_with url: orders_path, method: "post" do |form| %>
             <%= hidden_field_tag :total_price, total_price %>
+
             <%= submit_tag value = "Buy Now",
                            data: { confirm: "Confirm Order?", disable_with: "Placing Order.." },
                            class: "Table-button" %>
